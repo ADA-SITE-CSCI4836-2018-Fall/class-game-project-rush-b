@@ -44,17 +44,47 @@ public class Spawn_Snow_Script : MonoBehaviour {
             if (hit.transform.parent.parent != null)
             {
                 Debug.Log("Hitted");
-                FindObjectOfType<AudioManager>().Play("ding");
+
+                Invoke("DealyedFunction", 0.33f);
+
+                //FindObjectOfType<AudioManager>().Play("ding");
                 Destroy(hit.transform.parent.parent.gameObject);
 
-                TimeScript.GameTime += 5;
-                Score.scoreValue += 1;
-               
+                //TimeScript.GameTime += 5;
+                //Score.scoreValue += 1;
+                //Destroy(hit.transform.parent.parent.gameObject);
             }
             
 
         }
 
     }
+
+    private void DelayedFunction()
+    {
+        FindObjectOfType<AudioManager>().Play("ding");
+        
+
+        TimeScript.GameTime += 5;
+        Score.scoreValue += 1;
+        //Destroy(hit.transform.parent.parent.gameObject);
+
+    }
+   
+
+    //IEnumerator WaitSpawner()
+    //{
+    //    yield return new WaitForSeconds(startWait);
+    //    while (!stop)
+    //    {
+    //        randEnemy = Random.Range(0, 1);
+
+    //        Vector3 spawnPosition = new Vector3(Random.Range(-9, 9), 0, Random.Range(-9, 9));
+    //        Instantiate(enemies[randEnemy], spawnPosition + transform.TransformPoint(0, 1, 0), gameObject.transform.rotation);
+    //        yield return new WaitForSeconds(spawnWait);
+
+    //    }
+
+    //}
 
 }
